@@ -112,11 +112,15 @@ The project uses Vite for fast development with:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
 **Inshaad Merchant**
 - GitHub: [@InshaadMerchant](https://github.com/InshaadMerchant)
-- Project Link: [NovaApp-Chatbot](https://github.com/InshaadMerchant/NovaApp-Chatbot)
+
+**Aliza Gowlani**
+- GitHub: [@Alizaa15](https://github.com/Alizaa15)
+
+**Project Link**: [NovaApp-Chatbot](https://github.com/InshaadMerchant/NovaApp-Chatbot)
 
 ## 🙏 Acknowledgments
 
