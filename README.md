@@ -1,185 +1,126 @@
 # NovaApp Chatbot
 
-A modern, intelligent chatbot interface built with Next.js, React, and TypeScript.
+A modern, responsive chatbot interface built with React and Vite. This project provides a clean and intuitive chat interface with a beautiful UI design.
 
-## Features
+## 🚀 Features
 
-- 🎨 Modern, responsive UI with Tailwind CSS
-- 💬 Real-time chat interface
-- 🤖 Bot typing indicators
-- 📱 Mobile-friendly design
-- ⚡ Fast and optimized with Next.js
-- 🔧 TypeScript for type safety
-- 🎯 Ready for backend integration
+- **Modern React Architecture**: Built with React 19 and modern hooks
+- **Responsive Design**: Beautiful UI that works on all devices
+- **Real-time Chat Interface**: Clean message display with user and bot messages
+- **Material Design Icons**: Integrated Google Material Symbols for icons
+- **Fast Development**: Powered by Vite for lightning-fast development experience
+- **ESLint Integration**: Code quality and consistency with ESLint
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-### Frontend
-- **Next.js 14** - React framework with App Router
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide React** - Beautiful icons
-- **clsx** - Conditional className utility
+- **Frontend**: React 19.1.1
+- **Build Tool**: Vite 7.1.2
+- **Styling**: CSS3 with modern features
+- **Icons**: Google Material Symbols
+- **Linting**: ESLint with React plugins
 
-### Backend (Planned)
-- **Node.js** - Runtime environment
-- **SQLite** - Database
-- **Express.js** - Web framework (recommended)
+## 📦 Installation
 
-## Getting Started
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/InshaadMerchant/NovaApp-Chatbot.git
+   cd NovaApp-Chatbot
+   ```
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### Installation
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd novaapp-chatbot
-```
+4. **Open your browser**
+   Navigate to `http://localhost:5173` (or the port shown in terminal)
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+## 🎯 Available Scripts
 
-3. Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-novaapp-chatbot/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Home page
-│   └── globals.css        # Global styles
-├── components/            # React components
-│   ├── ChatbotInterface.tsx
-│   ├── ChatMessage.tsx
-│   └── TypingIndicator.tsx
-├── lib/                   # Utility functions
-│   └── utils.ts
-├── types/                 # TypeScript types
-│   └── chat.ts
-├── public/                # Static assets
-└── package.json
+src/
+├── components/
+│   ├── ChatbotIcon.jsx    # Chatbot icon component
+│   ├── ChatForm.jsx       # Message input form
+│   └── ChatMessage.jsx    # Individual message component
+├── App.jsx                # Main application component
+├── main.jsx              # Application entry point
+└── index.css             # Global styles
 ```
 
-## Components
+## 🎨 Components
 
-### ChatbotInterface
-The main chat interface component that handles:
-- Message state management
-- User input handling
-- Bot response simulation
-- Auto-scrolling to latest messages
+### ChatbotIcon
+- Reusable SVG icon component for the chatbot
+- Used in header and bot messages
+
+### ChatForm
+- Message input form with submit functionality
+- Handles user input and form submission
+- Integrates with chat history state
 
 ### ChatMessage
-Individual message component with:
-- User/bot message styling
-- Timestamp display
-- Avatar icons
-- Responsive design
+- Displays individual chat messages
+- Supports both user and bot message types
+- Conditional rendering based on message role
 
-### TypingIndicator
-Animated typing indicator showing when the bot is "thinking"
+## 🔧 Development
 
-## Backend Integration
+The project uses Vite for fast development with:
+- Hot Module Replacement (HMR)
+- Fast build times
+- Modern ES modules support
+- Built-in TypeScript support (if needed)
 
-The frontend is ready for backend integration. You'll need to:
+## 🚧 Current Status
 
-1. Replace the simulated bot response in `ChatbotInterface.tsx`
-2. Create API endpoints for:
-   - Message processing
-   - Chat history
-   - User authentication (if needed)
+- ✅ Frontend UI complete
+- ✅ Component architecture implemented
+- ✅ State management with React hooks
+- 🔄 API integration (coming next)
+- 🔄 Backend implementation (planned)
 
-### Example API Integration
+## 📝 Next Steps
 
-```typescript
-const handleSendMessage = async () => {
-  // ... existing code ...
-  
-  try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        message: userMessage.content,
-        sessionId: sessionId
-      })
-    })
-    
-    const data = await response.json()
-    
-    const botMessage: Message = {
-      id: generateId(),
-      content: data.response,
-      sender: 'bot',
-      timestamp: new Date()
-    }
-    
-    setMessages(prev => [...prev, botMessage])
-  } catch (error) {
-    console.error('Error sending message:', error)
-  } finally {
-    setIsLoading(false)
-  }
-}
-```
+1. **API Integration**: Connect to chatbot API
+2. **Backend Development**: Implement server-side logic
+3. **Database Integration**: Add persistent storage
+4. **Authentication**: User management system
+5. **Deployment**: Production deployment setup
 
-## Customization
-
-### Styling
-- Modify `tailwind.config.js` for theme customization
-- Update `app/globals.css` for custom CSS classes
-- Adjust component styles in individual component files
-
-### Features
-- Add message reactions
-- Implement file uploads
-- Add voice messages
-- Create conversation history
-- Add user profiles
-
-## Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
-
-### Other Platforms
-- Netlify
-- Railway
-- DigitalOcean App Platform
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
+## 👨‍💻 Author
 
-For support, please open an issue in the GitHub repository or contact the development team. 
+**Inshaad Merchant**
+- GitHub: [@InshaadMerchant](https://github.com/InshaadMerchant)
+- Project Link: [NovaApp-Chatbot](https://github.com/InshaadMerchant/NovaApp-Chatbot)
+
+## 🙏 Acknowledgments
+
+- React team for the amazing framework
+- Vite team for the fast build tool
+- Google for Material Design icons
+- All contributors and supporters
