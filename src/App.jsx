@@ -2,9 +2,12 @@ import { useState } from 'react'
 import ChatbotIcon from "./components/ChatbotIcon"
 import ChatForm from "./components/ChatForm"
 import ChatMessage from "./components/ChatMessage"
+import LoginPage from "./components/LoginPage"
+
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // track login state
 
   const generateBotResponse = (history) => {
     console.log(history);
@@ -12,6 +15,11 @@ const App = () => {
 
   return (
     <div className="container">
+       {!isLoggedIn ? (
+        // Show login first
+        <LoginPage onLogin={() => setIsLoggedIn(true)} />
+      ) : (
+        // Show chatbot after login
       <div className="chatbot-popup">
         {/* Chatbot Header */}
         <div className="chatbot-header">
@@ -21,6 +29,7 @@ const App = () => {
           </div>
           <button className="material-symbols-rounded"> keyboard_arrow_down</button>
         </div>
+
         <div className="chat-body">
           {/* Chatbot Body */}
           <div className="message bot-message">
@@ -29,6 +38,7 @@ const App = () => {
               Hello, how can I help you today?
             </p>
           </div>
+
           {/* Render the chat history dynamically */}
           {chatHistory.map((chat, index) => (
             <ChatMessage key={index} chat={chat} />
@@ -40,9 +50,9 @@ const App = () => {
           {/* Chatbot Footer */}
           <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateBotResponse={generateBotResponse} />
         </div>
-      </div>
+      </div> )}
     </div>
-  )
-}
+  );
+};
 
 export default App
