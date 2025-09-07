@@ -1,13 +1,16 @@
 # NovaApp Chatbot
 
-A modern, responsive chatbot interface built with React and Vite. This project provides a clean and intuitive chat interface with a beautiful UI design.
+A modern, responsive chatbot interface built with React and Vite, powered by Google's Gemini AI. This project provides a clean and intuitive chat interface with a beautiful blue-themed UI design and real-time AI conversations.
 
 ## 🚀 Features
 
+- **AI-Powered Conversations**: Integrated with Google Gemini 2.0 Flash API
 - **Modern React Architecture**: Built with React 19 and modern hooks
-- **Responsive Design**: Beautiful UI that works on all devices
+- **Responsive Design**: Beautiful blue-themed UI that works on all devices
 - **Real-time Chat Interface**: Clean message display with user and bot messages
 - **Material Design Icons**: Integrated Google Material Symbols for icons
+- **Company Context**: Pre-loaded with NovaApp company information
+- **Error Handling**: Robust error handling and user feedback
 - **Fast Development**: Powered by Vite for lightning-fast development experience
 - **ESLint Integration**: Code quality and consistency with ESLint
 
@@ -15,7 +18,8 @@ A modern, responsive chatbot interface built with React and Vite. This project p
 
 - **Frontend**: React 19.1.1
 - **Build Tool**: Vite 7.1.2
-- **Styling**: CSS3 with modern features
+- **AI Integration**: Google Gemini 2.0 Flash API
+- **Styling**: CSS3 with modern features and blue theme
 - **Icons**: Google Material Symbols
 - **Linting**: ESLint with React plugins
 
@@ -32,12 +36,26 @@ A modern, responsive chatbot interface built with React and Vite. This project p
    npm install
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```bash
+   VITE_API_URL=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+   VITE_API_KEY=your_gemini_api_key_here
+   ```
+   
+   Get your API key from [Google AI Studio](https://aistudio.google.com/)
+
+4. **Start the development server**
    ```bash
    npm run dev
    ```
+   
+   Note: If you encounter Node.js version issues, use:
+   ```bash
+   npx vite --host
+   ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:5173` (or the port shown in terminal)
 
 ## 🎯 Available Scripts
@@ -54,10 +72,11 @@ src/
 ├── components/
 │   ├── ChatbotIcon.jsx    # Chatbot icon component
 │   ├── ChatForm.jsx       # Message input form
-│   └── ChatMessage.jsx    # Individual message component
-├── App.jsx                # Main application component
+│   ├── ChatMessage.jsx    # Individual message component
+│   └── companyInfo.js     # NovaApp company information
+├── App.jsx                # Main application component with Gemini API integration
 ├── main.jsx              # Application entry point
-└── index.css             # Global styles
+└── index.css             # Global styles with blue theme
 ```
 
 ## 🎨 Components
@@ -75,6 +94,14 @@ src/
 - Displays individual chat messages
 - Supports both user and bot message types
 - Conditional rendering based on message role
+- Error message display with red styling
+
+### App.jsx
+- Main application component with Gemini API integration
+- Chat history state management
+- Real-time API communication
+- Error handling and user feedback
+- Auto-scroll functionality
 
 ## 🔧 Development
 
@@ -82,23 +109,28 @@ The project uses Vite for fast development with:
 - Hot Module Replacement (HMR)
 - Fast build times
 - Modern ES modules support
+- Environment variable support
 - Built-in TypeScript support (if needed)
 
 ## 🚧 Current Status
 
-- ✅ Frontend UI complete
+- ✅ Frontend UI complete with blue theme
 - ✅ Component architecture implemented
 - ✅ State management with React hooks
-- 🔄 API integration (coming next)
-- 🔄 Backend implementation (planned)
+- ✅ Gemini AI API integration
+- ✅ Real-time chat functionality
+- ✅ Error handling and user feedback
+- ✅ Company context integration
+- ✅ Responsive design
 
 ## 📝 Next Steps
 
-1. **API Integration**: Connect to chatbot API
-2. **Backend Development**: Implement server-side logic
-3. **Database Integration**: Add persistent storage
+1. **Enhanced Features**: Add typing indicators, message timestamps
+2. **Backend Development**: Implement server-side logic for scalability
+3. **Database Integration**: Add persistent storage for chat history
 4. **Authentication**: User management system
 5. **Deployment**: Production deployment setup
+6. **Analytics**: Chat analytics and insights
 
 ## 🤝 Contributing
 
@@ -126,5 +158,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - React team for the amazing framework
 - Vite team for the fast build tool
-- Google for Material Design icons
+- Google for Material Design icons and Gemini AI API
 - All contributors and supporters
+
+## 🎨 Design
+
+The chatbot features a modern blue-themed design with:
+- Clean, intuitive interface
+- Responsive layout for all devices
+- Material Design principles
+- Smooth animations and transitions
+- Professional color scheme
