@@ -108,7 +108,7 @@ const App = () => {
           {/* Chatbot Footer */}
           <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateBotResponse={generateBotResponse} />
         </div>
-      </div> )}
+      </div> 
     </div>
   );
 };
