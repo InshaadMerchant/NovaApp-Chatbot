@@ -1,0 +1,1 @@
+export const companyInfo = `NovaApp is a leading provider of innovative software solutions for businesses. With a focus on cutting-edge technology and user-friendly design, NovaApp helps companies streamline operations and enhance productivity. Our team of experts is dedicated to delivering top-quality software that meets the unique needs of our clients.`;
