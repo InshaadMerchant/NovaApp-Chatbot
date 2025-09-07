@@ -21,7 +21,6 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
-
   const generateBotResponse = async (history) => {
     const updateHistory = (text, isError = false) => {
       setChatHistory(prev => [...prev.filter(msg => msg.text !== "Thinking..."), {role: "model", text, isError}]);

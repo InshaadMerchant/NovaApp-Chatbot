@@ -95,7 +95,6 @@ body {
     align-items: center;
 }
 
-
 .header-info svg {
     height: 35px;
     width: 35px;
@@ -128,7 +127,6 @@ body {
     background: none;
     transition: all 0.2s ease;
 }
-
 
 .chat-header button:hover {
     background: #1d4ed8;
