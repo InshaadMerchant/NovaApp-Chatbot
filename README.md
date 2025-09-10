@@ -6,6 +6,8 @@ A modern, responsive chatbot interface built with React and Vite, powered by Goo
 
 - **Secure Login System**: User authentication with login page
 - **AI-Powered Conversations**: Integrated with Google Gemini 2.0 Flash API
+- **Support Form System**: Inline support form with email notifications
+- **Backend Email Service**: Automatic email delivery to support team
 - **Modern React Architecture**: Built with React 19 and modern hooks
 - **Responsive Design**: Beautiful blue-themed UI that works on all devices
 - **Real-time Chat Interface**: Clean message display with user and bot messages
@@ -18,6 +20,8 @@ A modern, responsive chatbot interface built with React and Vite, powered by Goo
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 19.1.1
+- **Backend**: Node.js with Express
+- **Email Service**: Nodemailer with Gmail SMTP
 - **Build Tool**: Vite 7.1.2
 - **AI Integration**: Google Gemini 2.0 Flash API
 - **Styling**: CSS3 with modern features and blue theme
@@ -46,7 +50,40 @@ A modern, responsive chatbot interface built with React and Vite, powered by Goo
    
    Get your API key from [Google AI Studio](https://aistudio.google.com/)
 
-4. **Start the development server**
+4. **Set up the backend (for support form emails)**
+   
+   **Option A: Quick Setup**
+   ```bash
+   # Run the setup script
+   .\setup-backend.ps1
+   ```
+   
+   **Option B: Manual Setup**
+   ```bash
+   cd backend
+   npm install
+   ```
+   
+   Then update `backend/.env` with your Gmail credentials:
+   ```env
+   EMAIL_USER=your-gmail@gmail.com
+   EMAIL_PASS=your-gmail-app-password
+   PORT=3001
+   ```
+   
+   **Get Gmail App Password:**
+   1. Go to Google Account → Security
+   2. Enable 2-Step Verification
+   3. Go to App passwords → Generate password for "Mail"
+   4. Use the 16-character password in EMAIL_PASS
+
+5. **Start the backend server**
+   ```bash
+   cd backend
+   npm start
+   ```
+
+6. **Start the frontend development server**
    ```bash
    npm run dev
    ```
@@ -56,7 +93,7 @@ A modern, responsive chatbot interface built with React and Vite, powered by Goo
    npx vite --host
    ```
 
-5. **Open your browser**
+7. **Open your browser**
    Navigate to `http://localhost:5173` (or the port shown in terminal)
 
 ## 🎯 Available Scripts
@@ -104,6 +141,12 @@ src/
 - Form validation and submission handling
 - Beautiful gradient background design
 - Responsive layout for all devices
+
+### SupportForm
+- Inline support form that appears inside chatbot
+- Collects user contact information and message
+- Sends data to backend API for email processing
+- Compact design optimized for chatbot interface
 
 ### App.jsx
 - Main application component with login and chatbot functionality

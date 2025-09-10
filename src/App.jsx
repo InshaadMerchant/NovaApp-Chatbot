@@ -3,6 +3,7 @@ import ChatbotIcon from "./components/ChatbotIcon"
 import ChatForm from "./components/ChatForm"
 import ChatMessage from "./components/ChatMessage"
 import LoginPage from "./components/LoginPage"
+import SupportForm from "./components/SupportForm"
 import { companyInfo } from "./components/companyInfo"
 
 const App = () => {
@@ -15,15 +16,58 @@ const App = () => {
     },
   ]);
   const [showChatbot, setShowChatbot] = useState(false);
+  const [showSupportForm, setShowSupportForm] = useState(false);
+  const [agentsBusy, setAgentsBusy] = useState(false);
   const chatBodyRef = useRef();
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
+  const handleSupportFormSubmit = async (formData) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/support', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Thank you for your message! Our team will get back to you soon.');
+        setShowSupportForm(false);
+        setAgentsBusy(false);
+      } else {
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Error submitting support form:', error);
+      alert('Failed to submit your message. Please try again later.');
+    }
+  };
+
+  const handleSupportFormCancel = () => {
+    setShowSupportForm(false);
+  };
+
   const generateBotResponse = async (history) => {
     const updateHistory = (text, isError = false) => {
       setChatHistory(prev => [...prev.filter(msg => msg.text !== "Thinking..."), {role: "model", text, isError}]);
+    }
+    
+    // Simulate random busy agents (30% chance)
+    const isBusy = Math.random() < 0.3;
+    
+    if (isBusy) {
+      setAgentsBusy(true);
+      updateHistory("I'm sorry, but all our support agents are currently busy. Please fill out the support form and our team will get back to you as soon as possible.");
+      setTimeout(() => {
+        setShowSupportForm(true);
+      }, 2000);
+      return;
     }
     
     const contents = history.map(({role, text}) => ({
@@ -90,7 +134,16 @@ const App = () => {
             <ChatbotIcon />
             <h2 className="logo-text">Chatbot</h2>
           </div>
-          <button onClick={() => setShowChatbot((prev) => !prev)} className="material-symbols-rounded"> keyboard_arrow_down</button>
+          <div className="header-buttons">
+            <button 
+              onClick={() => setShowSupportForm(true)} 
+              className="support-btn" 
+              title="Contact Support"
+            >
+              <span className="material-symbols-rounded">support_agent</span>
+            </button>
+            <button onClick={() => setShowChatbot((prev) => !prev)} className="material-symbols-rounded"> keyboard_arrow_down</button>
+          </div>
         </div>
         <div ref={chatBodyRef} className="chat-body">
           <div className="message bot-message">
@@ -102,6 +155,14 @@ const App = () => {
           {chatHistory.map((chat, index) => (
             <ChatMessage key={index} chat={chat} />
           ))}
+          
+          {/* Support Form inside chatbot */}
+          {showSupportForm && (
+            <SupportForm 
+              onSubmit={handleSupportFormSubmit}
+              onCancel={handleSupportFormCancel}
+            />
+          )}
         </div>
         <div className="chat-footer">
           <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateBotResponse={generateBotResponse} />
